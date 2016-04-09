@@ -1,0 +1,17 @@
+{
+  "name": "YoutubeClient",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "immutability-helper": "^2.0.0",
+    "react": "^0.14.8",
+    "react-native": "^0.23.1",
+    "react-native-google-signin": "^0.4.3",
+    "react-redux": "^4.4.2",
+    "redux": "^3.4.0",
+    "redux-thunk": "^2.0.1"
+  }
+}

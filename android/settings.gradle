@@ -1,0 +1,3 @@
+rootProject.name = 'YoutubeClient'
+
+include ':app'
