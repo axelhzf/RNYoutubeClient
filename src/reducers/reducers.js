@@ -46,7 +46,7 @@ export default (state, action) => {
   }
 
   if (action.error) {
-    console.trace(action.stack);
+    console.trace(action.payload.stack);
   }
 
   console.log("action without reducer", action.type, action.payload);

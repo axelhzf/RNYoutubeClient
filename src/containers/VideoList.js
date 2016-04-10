@@ -30,6 +30,7 @@ export default  class SubscriptionsList extends Component {
           renderRow={this.renderRow.bind(this)}
           renderScrollComponent={props => <RecyclerViewBackedScrollView style={styles.scrollView} {...props} />}
           renderSeparator={this.renderSeparator.bind(this)}
+          enableEmptySections={true}
         />
       </View>
     )

@@ -10,9 +10,9 @@ export const LOGIN_REQUEST = "CHECK_LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "CHECK_LOGIN_SUCCESS";
 export const LOGIN_ERROR = "CHECK_LOGIN_ERROR";
 
-export const LOGOUT_REQUEST = "CHECK_LOGIN_REQUEST";
-export const LOGOUT_SUCCESS = "CHECK_LOGIN_SUCCESS";
-export const LOGOUT_ERROR = "CHECK_LOGIN_ERROR";
+export const LOGOUT_REQUEST = "CHECK_LOGOUT_REQUEST";
+export const LOGOUT_SUCCESS = "CHECK_LOGOUT_SUCCESS";
+export const LOGOUT_ERROR = "CHECK_LOGOUT_ERROR";
 
 export const TABS_SELECT = "TABS_SELECT";
 
@@ -43,11 +43,14 @@ export function login() {
 }
 
 export function logout() {
-  return (dispatch) => {
-    dispatch({type: LOGOUT_REQUEST});
-    userService.logout()
-      .then(user => dispatch({type: LOGOUT_SUCCESS}))
-      .catch((e) => dispatch({type: LOGOUT_ERROR, error: true, payload: e}));
+  return async (dispatch) => {
+    try {
+      dispatch({type: LOGOUT_REQUEST});
+      await userService.logout();
+      dispatch({type: LOGOUT_SUCCESS})
+    } catch(e) {
+      dispatch({type: LOGOUT_ERROR, error: true, payload: e})
+    }
   }
 }
 
