@@ -1,57 +1,35 @@
-import React, {
-  Component,
-  View,
-  Text,
-  StyleSheet,
-  ListView,
-  RecyclerViewBackedScrollView,
-  TouchableHighlight,
-  Image,
-  NavigatorIOS
-} from 'react-native';
+import React, {Component, View, StyleSheet, ListView, RecyclerViewBackedScrollView} from 'react-native';
 import {connect} from 'react-redux';
 import Video from "./Video";
 import * as actions from "../actions/actions";
+import VideoRow from "../components/VideoRow";
+import ListRowSeparator from "../components/ListRowSeparator";
 
 export default  class SubscriptionsList extends Component {
-
+  
   componentDidMount() {
     if (this.props.videos === undefined) {
       const {channelId} = this.props;
       this.props.dispatch(actions.fetchChannelVideos(channelId));
     }
   }
-
+  
   render() {
     return (
       <View style={styles.container}>
         <ListView
           dataSource={this.props.dataSource}
-          renderRow={this.renderRow.bind(this)}
+          renderRow={(rowData) => <VideoRow video={rowData} onPress={() =>this.pressRow(rowData)}/>}
           renderScrollComponent={props => <RecyclerViewBackedScrollView style={styles.scrollView} {...props} />}
-          renderSeparator={this.renderSeparator.bind(this)}
+          renderSeparator={(sectionID, rowID) => <ListRowSeparator key={`${sectionID}-${rowID}`}/>}
           enableEmptySections={true}
         />
       </View>
     )
   }
-
-  renderRow(rowData, sectionID, rowID) {
-    return (
-      <TouchableHighlight onPress={() => this.pressRow(sectionID, rowID)}>
-        <View style={styles.row}>
-          <Image  style={styles.rowImage} source={{uri: rowData.snippet.thumbnails.high.url}}/>
-          <Text style={styles.rowText}>{rowData.snippet.title}</Text>
-          <Text style={styles.rowDescription} numberOfLines={3}>{rowData.snippet.description}</Text>
-        </View>
-      </TouchableHighlight>
-    );
-  }
-
-  pressRow(sectionID, rowID) {
-    const rowData = this.props.videos[parseInt(rowID, 10)];
-    const videoId = rowData.snippet.resourceId.videoId;
-
+  
+  pressRow(video) {
+    const videoId = video.snippet.resourceId.videoId;
     this.props.navigator.push({
       title: "Video",
       component: Video,
@@ -60,11 +38,7 @@ export default  class SubscriptionsList extends Component {
       passProps: {videoId}
     });
   }
-
-  renderSeparator(sectionID, rowID) {
-    return <View key={`${sectionID}-${rowID}`} style={styles.separator}/>
-  }
-
+  
 }
 
 const styles = StyleSheet.create({
@@ -72,29 +46,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   scrollView: {
-    backgroundColor: "#F5F5F5"
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#fff'
-  },
-  rowImage: {
-    //width: 300,
-    height: 150
-  },
-  rowText: {
-    color: "#546E7A",
-    padding: 10,
-    fontWeight: "bold"
-  },
-  rowDescription: {
-    color: "#546E7A",
-    padding: 10,
-    paddingTop: 0
-  },
-  separator: {
-    height: 30,
     backgroundColor: "#F5F5F5"
   }
 });

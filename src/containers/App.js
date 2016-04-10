@@ -1,10 +1,10 @@
-import React, {Component, View, Text, StyleSheet, TabBarIOS} from 'react-native';
+import React, {Component, View, Text, StyleSheet, TabBarIOS, NavigatorIOS} from 'react-native';
 import {connect} from 'react-redux';
 import * as actions from "../actions/actions";
 
 import Login from "./Login";
 import Account from "./Account";
-import Subscriptions from "./Subscriptions";
+import SubscriptionsList from "./SubscriptionsList";
 
 class App extends Component {
 
@@ -35,16 +35,19 @@ class App extends Component {
     } else if (userState === "loggedIn") {
       childView = (
         <TabBarIOS>
-          <TabBarIOS.Item 
-            title="Subscriptions" 
-            selected={this.isTabSelected("subscriptions")} 
+          <TabBarIOS.Item
+            title="Subscriptions"
+            selected={this.isTabSelected("subscriptions")}
             onPress={() => this.selectTab("subscriptions")}
             systemIcon="history">
-            <Subscriptions/>
+            <NavigatorIOS
+              style={styles.container}
+              initialRoute={{ title: 'Subscriptions', component: SubscriptionsList}}
+            />
           </TabBarIOS.Item>
-          <TabBarIOS.Item 
-            title="Account" 
-            selected={this.isTabSelected("account")} 
+          <TabBarIOS.Item
+            title="Account"
+            selected={this.isTabSelected("account")}
             onPress={() => this.selectTab("account")}
             systemIcon="history">
             <Account/>
@@ -59,14 +62,10 @@ class App extends Component {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#fff'
   }
-
 });
 
 function mapStateToProps(state) {
