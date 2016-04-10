@@ -31,6 +31,8 @@
 		7428B6641CB92896004C4137 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7428B6631CB92896004C4137 /* StoreKit.framework */; };
 		7428B6661CB9289C004C4137 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7428B6651CB9289C004C4137 /* SystemConfiguration.framework */; };
 		7428B6681CB928F3004C4137 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7428B6671CB928F3004C4137 /* SafariServices.framework */; };
+		7428B66F1CBAB29D004C4137 /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7428B66E1CBAB28A004C4137 /* libRCTYouTube.a */; };
+		7428B6711CBAB2F3004C4137 /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 7428B6701CBAB2F3004C4137 /* YTPlayerView-iframe-player.html */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,13 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		7428B66D1CBAB28A004C4137 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7428B6691CBAB28A004C4137 /* RCTYouTube.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BDB9BC91B4289AE00EF9FEF;
+			remoteInfo = RCTYouTube;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -144,6 +153,8 @@
 		7428B6631CB92896004C4137 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7428B6651CB9289C004C4137 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7428B6671CB928F3004C4137 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		7428B6691CBAB28A004C4137 /* RCTYouTube.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTYouTube.xcodeproj; path = "../node_modules/react-native-youtube/RCTYouTube.xcodeproj"; sourceTree = "<group>"; };
+		7428B6701CBAB2F3004C4137 /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7428B66F1CBAB29D004C4137 /* libRCTYouTube.a in Frameworks */,
 				7428B6681CB928F3004C4137 /* SafariServices.framework in Frameworks */,
 				7428B6661CB9289C004C4137 /* SystemConfiguration.framework in Frameworks */,
 				7428B6641CB92896004C4137 /* StoreKit.framework in Frameworks */,
@@ -282,6 +294,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7428B66A1CBAB28A004C4137 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7428B66E1CBAB28A004C4137 /* libRCTYouTube.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +313,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				7428B6691CBAB28A004C4137 /* RCTYouTube.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -318,6 +339,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7428B6701CBAB2F3004C4137 /* YTPlayerView-iframe-player.html */,
 				7428B6671CB928F3004C4137 /* SafariServices.framework */,
 				7428B6651CB9289C004C4137 /* SystemConfiguration.framework */,
 				7428B6631CB92896004C4137 /* StoreKit.framework */,
@@ -443,6 +465,10 @@
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 				},
 				{
+					ProductGroup = 7428B66A1CBAB28A004C4137 /* Products */;
+					ProjectRef = 7428B6691CBAB28A004C4137 /* RCTYouTube.xcodeproj */;
+				},
+				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
@@ -512,6 +538,13 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		7428B66E1CBAB28A004C4137 /* libRCTYouTube.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTYouTube.a;
+			remoteRef = 7428B66D1CBAB28A004C4137 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -540,6 +573,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7428B6711CBAB2F3004C4137 /* YTPlayerView-iframe-player.html in Resources */,
 				7428B6591CB924E9004C4137 /* GoogleSignIn.bundle in Resources */,
 				7428B65E1CB92665004C4137 /* GoogleService-Info.plist in Resources */,
 				7428B6601CB92839004C4137 /* RNGoogleSignin in Resources */,

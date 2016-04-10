@@ -15,7 +15,7 @@ class YoutubeService {
       }
     });
     let responseJson = await response.json();
-    
+
     return responseJson.items;
   }
 
@@ -30,8 +30,6 @@ class YoutubeService {
     const playlistItemsResponse = await fetch(playlistItemsUrl);
     const playlistItemsResponseJson = await playlistItemsResponse.json();
 
-    console.log(playlistItemsResponseJson.items);
-    
     return playlistItemsResponseJson.items;
   }
 

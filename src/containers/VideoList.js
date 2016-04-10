@@ -10,7 +10,7 @@ import React, {
   NavigatorIOS
 } from 'react-native';
 import {connect} from 'react-redux';
-
+import Video from "./Video";
 import * as actions from "../actions/actions";
 
 export default  class SubscriptionsList extends Component {
@@ -48,7 +48,16 @@ export default  class SubscriptionsList extends Component {
   }
 
   pressRow(sectionID, rowID) {
-    console.log(this.props.navigator);
+    const rowData = this.props.videos[parseInt(rowID, 10)];
+    const videoId = rowData.snippet.resourceId.videoId;
+
+    this.props.navigator.push({
+      title: "Video",
+      component: Video,
+      leftButtonTitle: 'Back',
+      onLeftButtonPress: () => this.props.navigator.pop(),
+      passProps: {videoId}
+    });
   }
 
   renderSeparator(sectionID, rowID) {
