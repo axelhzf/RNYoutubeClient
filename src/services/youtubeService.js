@@ -15,6 +15,7 @@ class YoutubeService {
       }
     });
     let responseJson = await response.json();
+    
     return responseJson.items;
   }
 

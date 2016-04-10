@@ -27,6 +27,14 @@ export default (state, action) => {
     return update(state, {tabs: {selected: {$set: tabName}}});
   }
 
+  if (action.type === actions.SUBSCRIPTIONS_SUCCESS) {
+    const {subscriptions} = action.payload;
+    const newState = update(state, {
+      subscriptions: {data: {$set : subscriptions}}
+    });
+    return newState;
+  }
+
   if (action.type === actions.CHANNEL_VIDEOS_SUCCESS) {
     const {videos, channelId} = action.payload;
     const newState = update(state, {
@@ -38,7 +46,7 @@ export default (state, action) => {
   }
 
   if (action.error) {
-    console.trace(action.payload);
+    console.trace(action.stack);
   }
 
   console.log("action without reducer", action.type, action.payload);

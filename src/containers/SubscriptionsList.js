@@ -12,13 +12,13 @@ import React, {
 import {connect} from 'react-redux';
 
 import VideoList from "./VideoList";
-import youtubeService from "../services/youtubeService";
+import * as actions from "../actions/actions";
 
 export default  class SubscriptionsList extends Component {
 
   componentDidMount() {
     if (!this.props.subscriptions) {
-      youtubeService.getSubscriptions();
+      this.props.dispatch(actions.fetchSubscriptions())
     }
   }
 
@@ -105,8 +105,8 @@ var ds = new ListView.DataSource({
 
 function mapStateToProps(state) {
   return {
-    subscriptions: state.subscriptions.data.items,
-    dataSource: ds.cloneWithRows(state.subscriptions.data.items)
+    subscriptions: state.subscriptions.data,
+    dataSource: ds.cloneWithRows(state.subscriptions.data || [])
   };
 }
 
