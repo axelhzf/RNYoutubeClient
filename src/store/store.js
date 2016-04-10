@@ -165,6 +165,9 @@ const initialState = {
   },
   subscriptions: {
     data: subscriptions
+  },
+  channelVideos: {
+    
   }
 };
 

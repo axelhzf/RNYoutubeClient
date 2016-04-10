@@ -1,28 +1,7 @@
 import * as actions from "../actions/actions";
 import update from 'immutability-helper';
 
-
-
-let reducers = {
-
-  [actions.LOGIN_SUCCESS] : (state, action) => {
-
-  },
-
-  [actions.LOGOUT_SUCCESS] : (state) => {
-    return update(state, {user: {state: {$set: "notLoggedIn"}, data: {$set: undefined}}});
-  },
-
-  [actions.TABS_SELECT] : (state, action) => {
-    const tabName = action.payload.tabName;
-    return update(state, {tabs: {selected: {$set: tabName}}});
-  }
-
-};
-
-
 export default (state, action) => {
-
   console.log("action", action.type, action.payload);
 
   if (action.type === actions.CHECK_LOGIN_SUCCESS) {
@@ -48,10 +27,19 @@ export default (state, action) => {
     return update(state, {tabs: {selected: {$set: tabName}}});
   }
 
-  if(action.error) {
-    console.trace(action.payload);
+  if (action.type === actions.CHANNEL_VIDEOS_SUCCESS) {
+    const {videos, channelId} = action.payload;
+    const newState = update(state, {
+      channelVideos: {
+        [channelId]: {$set : {data: videos}}
+      }
+    });
+    return newState;
   }
 
+  if (action.error) {
+    console.trace(action.payload);
+  }
 
   console.log("action without reducer", action.type, action.payload);
 
