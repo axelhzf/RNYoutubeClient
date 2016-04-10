@@ -12,10 +12,12 @@ export const LOGOUT_REQUEST = "CHECK_LOGIN_REQUEST";
 export const LOGOUT_SUCCESS = "CHECK_LOGIN_SUCCESS";
 export const LOGOUT_ERROR = "CHECK_LOGIN_ERROR";
 
+export const TABS_SELECT = "TABS_SELECT";
+
 export function checkLogin() {
   return (dispatch) => {
     dispatch({type: CHECK_LOGIN_REQUEST});
-    userService.getCurrentUser()
+    userService.requestCurrentUser()
       .then(user => dispatch({type: CHECK_LOGIN_SUCCESS, payload: {user}}))
       .catch((e) => dispatch({type: CHECK_LOGIN_ERROR, error: true, payload: e}));
   }
@@ -37,4 +39,11 @@ export function logout() {
       .then(user => dispatch({type: LOGOUT_SUCCESS}))
       .catch((e) => dispatch({type: LOGOUT_ERROR, error: true, payload: e}));
   }  
+}
+
+export function selectTab(tabName) {
+  return {
+    type: TABS_SELECT,
+    payload: {tabName}
+  }
 }
