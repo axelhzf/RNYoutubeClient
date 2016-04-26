@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "mocha --compilers js:babel-register tests/**/*"
   },
   "dependencies": {
     "immutability-helper": "^2.0.0",
@@ -15,5 +16,10 @@
     "redux": "^3.4.0",
     "redux-thunk": "^2.0.1",
     "remote-redux-devtools": "^0.1.5"
+  },
+  "devDependencies": {
+    "babel-preset-react-native": "^1.6.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
   }
 }
